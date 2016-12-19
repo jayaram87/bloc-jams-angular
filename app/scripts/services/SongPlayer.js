@@ -1,7 +1,16 @@
 (function() {
     function SongPlayer() {
+        
+        /**
+        * @desc instantiated SongPlayer object
+        * @type {Object}
+        */
         var SongPlayer = {};
         
+        /**
+        * @desc setting the current song as null
+        * @type {object}
+        */
         var currentSong = null;
         
         /**
@@ -29,18 +38,32 @@
  
             currentSong = song;
         };
+        
+        /**
+        * @function playSong
+        * @desc plays/pauses currentBuzzObject audio file
+        * @param {Object} song
+        */
+        var playSong = function(song) {
+            currentBuzzObject.play();
+            song.playing = true;
+        };
 
         SongPlayer.play = function(song) {
             if (currentSong !== song) {
                 setSong(song);
-                currentBuzzObject.play();
-                song.playing = true;
+                playSong(song);
             } else if (currentSong === song) {
                 if (currentBuzzObject.isPaused()) {
-                    currentBuzzObject.play();
+                    playSong(song);
                 }
             }     
-        };    
+        };
+        
+        SongPlayer.pause = function(song) {
+            currentBuzzObject.pause();
+            song.playing = false;
+        };
     }
  
     angular.module('blocJams').factory('SongPlayer', SongPlayer);
