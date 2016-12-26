@@ -34,6 +34,12 @@
         SongPlayer.currentTime = null;
         
         /**
+        * @desc voulume of currently playing song
+        * @type {Number}
+        */
+        SongPlayer.volume = 50;
+        
+        /**
         * @desc Buzz object audio file
         * @type {Object}
         */
@@ -44,7 +50,6 @@
         * @desc Stops currently playing song and loads new audio file as currentBuzzObject
         * @param {Object} song
         */
-        
         var setSong = function(song) {
             if (currentBuzzObject) {
                 currentBuzzObject.stop();
@@ -142,6 +147,20 @@
                 currentBuzzObject.setTime(time);
             }
         };
+        
+        /**
+        * @function setVolume
+        * @desc sets the volume on the currently playing song
+        * @param {Number} volume
+        */
+        SongPlayer.setVolume = function(volume) {
+            if (currentBuzzObject) {
+                currentBuzzObject.setVolume(volume);
+            }
+            SongPlayer.volume = volume;
+        };
+        
+        return SongPlayer;
     }
  
     angular.module('blocJams').factory('SongPlayer', ['$rootScope', 'Fixtures', SongPlayer]);
