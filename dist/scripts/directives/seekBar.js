@@ -32,10 +32,6 @@
                     return {width: percentString()};
                 };
                 
-                scope.thumbStyle = function() {
-                    return {left: percentString()}; // updates the postion of the seekbar thumb, left property is used to update the position of the thumb by offsetting the thumb position in relation the seekbar element
-                };
-                
                 scope.onClickSeekBar = function(event) {
                     var percent = calculatePercent(seekBar, event);
                     scope.value = percent * scope.max;
