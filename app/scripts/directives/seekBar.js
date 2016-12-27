@@ -76,5 +76,5 @@
         };
     }
  
-    angular.module('blocJams').directive('seekBar', [$document, seekBar]);
+    angular.module('blocJams').directive('seekBar', ['$document', seekBar]);
 })();
