@@ -67,14 +67,14 @@
                     });
                 };
                 
-                var notifyOnChange = function(newTime) {
+                var notifyOnChange = function(newValue) {
                     if (typeof scope.onChange === 'function') {
-                        scope.onChange({time: newTime});
+                        scope.onChange({value: newValue});
                     }
                 };
             }
         };
     }
  
-    angular.module('blocJams').directive('seekBar', [$document, seekBar]);
+    angular.module('blocJams').directive('seekBar', ['$document', seekBar]);
 })();
